@@ -13,18 +13,18 @@
         <h2 class="event-name"><%= @event.name %></h2>
         <div class="share-button-list">
             <a href="#" class="share-buttons check-button">I'M IN</a>
-            <a href="http://www.facebook.com/share.php?u=<%= event_path(@event) %>" class="share-buttons"><img src= "FacebookButton.png" /></a>
-            <a href="https://twitter.com/share?url=<%= event_path(@event) %>" class="share-buttons"><img src="TwitterButton.png" /></a>
+            <a href="http://www.facebook.com/share.php?u=<%= event_url(@event) %>" class="share-buttons"><%= image_tag 'FacebookButton.png' %></a>
+            <a href="https://twitter.com/share?url=<%= event_url(@event) %>" class="share-buttons"><%= image_tag "TwitterButton.png" %></a>
         </div>
     </div>
     <h4><%= @event.short_desc %></h4>
     <div class="time-club">
-        <%= "#{@event.time} #{event.club}" %>
+        <%= "#{@event.time} #{@event.club}" %>
     </div>
     <p><%= @event.desc %></p>
     <p>
-        <div class="club"><%= event.club %></div>
-        <div class="Address"><%= event.address %></div>
+        <div class="club"><%= @event.club %></div>
+        <div class="Address"><%= @event.address %></div>
     </p>
     <p>
         <a href="tel:<%= @event.phone %>" class="phone"><%= @event.phone %></a><br />

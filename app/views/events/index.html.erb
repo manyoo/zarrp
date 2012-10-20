@@ -14,16 +14,17 @@
     <ul data-role="listview" data-divider-theme="b">
         <% if !@events_today.empty? %>
         <li data-role="list-divider" class="ui-bar-b">TODAY, <%= %></li>
-            <%= @events_today.each do |event| %>
+            <% @events_today.each do |event| %>
                 <li><%= render :partial => 'event', :object => event %></li>
             <% end %>
         <% end %>
         <% if !@events_tomorrow.empty? %>
         <li data-role="list-divider" class="ui-bar-b">TOMORROW, <%= %></li>
-            <%= @events_today.each do |event| %>
+            <% @events_tomorrow.each do |event| %>
                 <li><%= render :partial => 'event', :object => event %></li>
             <% end %>
         <% end %>
+        <li data-role="list-divider" class="ui-bar-d">SUNDAY, OCTOBER 14</li>
     </ul>
     <div data-role="fieldcontain" class="more-button">
         <button data-theme="a">MORE</button>
