@@ -18,6 +18,8 @@ describe Event do
     it { should respond_to(:registrations) }
     it { should respond_to(:registers) }
 
+    it { should be_valid }
+    
     describe "when name is not present" do
         before { @event.name = '' }
         it { should_not be_valid }

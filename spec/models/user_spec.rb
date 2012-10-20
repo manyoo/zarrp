@@ -11,6 +11,8 @@ describe User do
     it { should respond_to(:registrations) }
     it { should respond_to(:events) }
 
+    it { should be_valid }
+
     describe "when user name is not present" do
         before { @user.name = '' }
         it { should_not be_valid }
