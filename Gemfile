@@ -39,7 +39,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'jquery-mobile-rails'
+gem 'jquery_mobile_rails', '1.2.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
