@@ -1,6 +1,6 @@
 class Registration < ActiveRecord::Base
-  attr_accessible :event_id, :user_id
-  belongs_to :user
+  attr_accessible :event_id
+  belongs_to :register, :class_name => "User", :foreign_key => "user_id"
   belongs_to :event
 
   validates :event_id, :presence => true
