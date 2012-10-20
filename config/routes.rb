@@ -1,6 +1,10 @@
 Zarrp::Application.routes.draw do
-  resources :events, :only => [:index, :show]
-
+  resources :events, :only => [:index, :show] do
+    member do
+      post :register
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -10,11 +10,11 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }
   validates :access_token, :presence => true, :uniqueness => true
 
-  def register(event)
-    registrations.create!(event_id: event.id)
+  def register(event_id)
+    registrations.create!(event_id: event_id)
   end
 
-  def registered?(event)
-    !registrations.find_by_event_id(event.id).nil?
+  def registered?(event_id)
+    !registrations.find_by_event_id(event_id).nil?
   end
 end
