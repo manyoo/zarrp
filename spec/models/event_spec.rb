@@ -85,4 +85,15 @@ describe Event do
             end
         end
     end
+
+    describe "user registering event" do
+        let(:user) { FactoryGirl.create(:user) }
+
+        before {
+            @event.save
+            user.register(@event)
+        }
+
+        its(:registers) { should include(user) }
+    end
 end

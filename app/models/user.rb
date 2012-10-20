@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }
   validates :access_token, :presence => true, :uniqueness => true
+
+  def register(event)
+    registrations.create!(event_id: event.id)
+  end
+
+  def registered?(event)
+    !registrations.find_by_event_id(event.id).nil?
+  end
 end

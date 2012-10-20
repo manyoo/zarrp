@@ -57,4 +57,15 @@ describe User do
 
         it { should_not be_valid }
     end
+
+    describe "registering events" do
+        let(:event) { FactoryGirl.create(:event) }
+        before {
+            @user.save
+            @user.register(event)
+        }
+
+        it { should be_registered(event) }
+        its(:events) { should include(event) }
+    end
 end
