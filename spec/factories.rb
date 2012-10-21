@@ -1,7 +1,10 @@
 FactoryGirl.define do
     factory :user do
-        name        "test"
-        email       "test@example.com"
+        firstname    "test"
+        lastname     "Huf" 
+        gender       "male"
+        default_currency "USD"
+        date_of_birth 10.year.ago
         access_token "alskdjfalskd"
     end
 

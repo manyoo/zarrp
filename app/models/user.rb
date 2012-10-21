@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :access_token, :email, :name
+  attr_accessible :access_token, :firstname, :lastname, :gender, :default_currency, :date_of_birth
   has_many :registrations, :dependent => :destroy
   has_many :events, :through => :registrations
 
-  before_save { |user| user.email = email.downcase }
-
-  validates :name, :presence => true
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }
+  validates :firstname, :presence => true
+  validates :lastname, :presence => true
+  validates :default_currency, :presence => true
+  validates :gender, :presence => true
   validates :access_token, :presence => true, :uniqueness => true
 
   def register(event_id)

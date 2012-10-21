@@ -1,25 +1,30 @@
 require 'spec_helper'
 
 describe User do
-    before { @user = User.new(name: "test", email: "test@example.com", access_token: "alkdlafalkdsflksdfjlakdh") }
+    before { @user = User.new(firstname: "test", lastname:"Huf", gender:"male",
+                              default_currency:"USD", date_of_birth: 10.year.ago, access_token: "alkdlafalkdsflksdfjlakdh") }
     
     subject { @user }
 
-    it { should respond_to(:name) }
-    it { should respond_to(:email) }
+    it { should respond_to(:firstname) }
+    it { should respond_to(:lastname) }
+    it { should respond_to(:gender) }
+    it { should respond_to(:default_currency) }
+    it { should respond_to(:date_of_birth) }
     it { should respond_to(:access_token) }
+
     it { should respond_to(:registrations) }
     it { should respond_to(:events) }
 
     it { should be_valid }
 
-    describe "when user name is not present" do
-        before { @user.name = '' }
+    describe "when user first name is not present" do
+        before { @user.firstname = '' }
         it { should_not be_valid }
     end
 
-    describe "when user email is not present" do
-        before { @user.email = '' }
+    describe "when user last name is not present" do
+        before { @user.lastname = '' }
         it { should_not be_valid }
     end
 
@@ -28,25 +33,14 @@ describe User do
         it { should_not be_valid }
     end
 
-    describe "when email format is invalid" do
-        it "should be invalid" do
-            addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                           foo@bar_baz.com foo@bar+baz.com]
-            addresses.each do |invalid_addr|
-                @user.email = invalid_addr
-                @user.should_not be_valid
-            end
-        end
+    describe "when default currency is not present" do
+        before { @user.default_currency = '' }
+        it { should_not be_valid }
     end
 
-    describe "when email format is valid" do
-        it "should be valid" do
-            addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-            addresses.each do |valid_addr|
-                @user.email = valid_addr
-                @user.should be_valid
-            end
-        end
+    describe "when gender is not present" do
+        before { @user.gender = '' }
+        it { should_not be_valid }
     end
 
     describe "when user access_token is not unique" do
