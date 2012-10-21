@@ -7,6 +7,7 @@ describe Event do
     subject { @event }
 
     it { should respond_to(:name) }
+    it { should respond_to(:subname) }
     it { should respond_to(:address) }
     it { should respond_to(:email) }
     it { should respond_to(:phone) }
@@ -14,6 +15,7 @@ describe Event do
     it { should respond_to(:club) }
     it { should respond_to(:short_desc) }
     it { should respond_to(:desc) }
+    it { should respond_to(:price) }
 
     it { should respond_to(:registrations) }
     it { should respond_to(:registers) }
