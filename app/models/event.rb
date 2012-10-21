@@ -1,7 +1,10 @@
 class Event < ActiveRecord::Base
-  attr_accessible :address, :club, :desc, :email, :name, :subname, :phone, :short_desc, :time, :price
+  attr_accessible :address, :club, :desc, :email, :name, :subname, :phone, :short_desc, :time, :price, :avatar, :image
   has_many :registrations, :dependent => :destroy
   has_many :registers, :through => :registrations, :class_name => "User"
+
+  has_attached_file :avatar
+  has_attached_file :image
 
   before_save { |event| event.email = email.downcase }
 

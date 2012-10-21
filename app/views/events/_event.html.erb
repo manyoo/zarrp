@@ -1,5 +1,5 @@
 <a href="<%= event_path(event) %>">
-<img src="event4.png">
+<%= image_tag event.avatar.url %>
 <h1><%= event.name %></h1>
 <h6><%= event.short_desc %></h6>
 <p><%= event.time %></p>
