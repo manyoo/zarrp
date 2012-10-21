@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021114039) do
+ActiveRecord::Schema.define(:version => 20121021143441) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -75,6 +75,10 @@ ActiveRecord::Schema.define(:version => 20121021114039) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "registrations", ["event_id"], :name => "index_registrations_on_event_id"
+  add_index "registrations", ["user_id", "event_id"], :name => "index_registrations_on_user_id_and_event_id", :unique => true
+  add_index "registrations", ["user_id"], :name => "index_registrations_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "firstname"
