@@ -5,6 +5,7 @@ ActiveAdmin.register Event do
       f.input :name
       f.input :subname
       f.input :club
+      f.input :city
       f.input :address
       f.input :phone, :as => :phone
       f.input :email, :as => :email
@@ -14,6 +15,7 @@ ActiveAdmin.register Event do
       f.input :image, :as => :file
       f.input :time
       f.input :price
+      f.input :addon_code
     end
     f.buttons
   end
@@ -22,6 +24,7 @@ ActiveAdmin.register Event do
     column :name
     column :subname
     column :club
+    column :city
     column :address
     column :phone
     column :email
@@ -35,6 +38,7 @@ ActiveAdmin.register Event do
     end
     column :time
     column :price
+    column :addon_code
     column :registers do |event|
       event.registers.count
     end
@@ -46,6 +50,7 @@ ActiveAdmin.register Event do
       row :name
       row :subname
       row :club
+      row :city
       row :address
       row :phone
       row :email
@@ -59,6 +64,7 @@ ActiveAdmin.register Event do
       end
       row :time
       row :price
+      row :addon_code
       row :registers do |event|
         event.registers.count
       end

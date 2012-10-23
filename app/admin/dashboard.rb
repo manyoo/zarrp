@@ -11,6 +11,7 @@ ActiveAdmin.register_page "Dashboard" do
                 end
                 column :subname
                 column :club
+                column :city
                 column :address
                 column :phone
                 column :email
@@ -24,8 +25,9 @@ ActiveAdmin.register_page "Dashboard" do
                 end
                 column :time
                 column :price
+                column :addon_code
                 column :registers do |event|
-                  link_to event.registers.count, '#'
+                    event.registers.count
                 end
             end
             strong { link_to "More Events", admin_events_path }

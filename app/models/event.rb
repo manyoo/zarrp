@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :address, :club, :desc, :email, 
+  attr_accessible :address, :club, :desc, :email, :city,
                   :name, :subname, :phone, :short_desc, :time, 
-                  :price, :avatar, :image
+                  :price, :avatar, :image, :addon_code
   has_many :registrations, :dependent => :destroy
   has_many :registers, :through => :registrations, :class_name => "User"
 
@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
   before_save { |event| event.email = email.downcase }
 
   validates :name, :presence => true
+  validates :city, :presence => true
   validates :address, :presence => true
   validates :club, :presence => true
   validates :phone, :presence => true
@@ -22,4 +23,5 @@ class Event < ActiveRecord::Base
 
   validates :avatar, :attachment_presence => true
   validates :image, :attachment_presence => true
+  validates :addon_code, :presence => true
 end

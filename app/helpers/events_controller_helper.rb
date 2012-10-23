@@ -39,7 +39,6 @@ module EventsControllerHelper
         json = CGI.escape(mkTicketJsonStr(user, event))
         url = URI.parse("https://api.lemon.com/v2/setAddOn/?request=#{json}")
         js = remoteCall(url)
-        logger.info js.to_s
         if js["response_code"] == "0"
             true
         else
@@ -60,11 +59,19 @@ module EventsControllerHelper
 
     def mkTicketJsonStr(user, event)
         JSON.generate "credentials" => { "vendor_id" => $vendorId, "vendor_pwd" => $vendorPwd },
-                      "addOn_type" => { "id_addOn_type" => "220",
-                                        "fields" => [{ "field_key" => "User Name", "field_value" => "#{user.firstname} #{user.lastname}"},
-                                                     { "field_key" => "Event Name", "field_value" => event.name },
-                                                     { "field_key" => "Event Date", "field_value" => event.time },
-                                                     { "field_key" => "Event Price", "field_value" => event.price }
+                      "addOn_type" => { "id_addOn_type" => event.addon_code,
+                                        "fields" => [{ "field_key" => "username", "field_value" => "#{user.firstname} #{user.lastname}"},
+                                                     { "field_key" => "eventname", "field_value" => event.name },
+                                                     { "field_key" => "eventdate", "field_value" => event.time },
+                                                     { "field_key" => "eventprice", "field_value" => event.price },
+                                                     { "field_key" => "eventcity", "field_value" => event.city },
+                                                     { "field_key" => "eventaddress", "field_value" => event.address },
+                                                     { "field_key" => "eventdesc", "field_value" => event.desc },
+                                                     { "field_key" => "eventshortdesc", "field_value" => event.short_desc },
+                                                     { "field_key" => "eventphone", "field_value" => event.phone },
+                                                     { "field_key" => "eventemail", "field_value" => event.email },
+                                                     { "field_key" => "eventsubname", "field_value" => event.subname },
+                                                     { "field_key" => "eventclub", "field_value" => event.club }
                                                     ]
                                       },
                       "user" => { "user_access_token" => user.access_token }

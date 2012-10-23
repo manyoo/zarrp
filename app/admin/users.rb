@@ -30,6 +30,7 @@ ActiveAdmin.register User do
         end
         column :subname
         column :club
+        column :city
         column :address
         column :phone
         column :email
@@ -43,6 +44,7 @@ ActiveAdmin.register User do
         end
         column :time
         column :price
+        column :addon_code
       end
     end
     active_admin_comments
