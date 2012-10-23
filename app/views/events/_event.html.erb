@@ -1,4 +1,4 @@
-<a href="<%= event_path(event) %>">
+<a href="<%= "#{event_path(event)}?user_access_token=#{CGI.escape @access_token}&addOn_access_token=#{CGI.escape @addon_token}" %>">
 <%= image_tag event.avatar.url %>
 <h1><%= event.name %></h1>
 <h6><%= event.short_desc %></h6>

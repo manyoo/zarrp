@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
-  attr_accessible :address, :club, :desc, :email, :name, :subname, :phone, :short_desc, :time, :price, :avatar, :image
+  attr_accessible :address, :club, :desc, :email, 
+                  :name, :subname, :phone, :short_desc, :time, 
+                  :price, :avatar, :image
   has_many :registrations, :dependent => :destroy
   has_many :registers, :through => :registrations, :class_name => "User"
 

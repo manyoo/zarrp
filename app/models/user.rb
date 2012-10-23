@@ -5,8 +5,6 @@ class User < ActiveRecord::Base
 
   validates :firstname, :presence => true
   validates :lastname, :presence => true
-  validates :default_currency, :presence => true
-  validates :gender, :presence => true
   validates :access_token, :presence => true, :uniqueness => true
 
   def register(event_id)

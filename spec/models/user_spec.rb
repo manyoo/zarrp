@@ -33,16 +33,6 @@ describe User do
         it { should_not be_valid }
     end
 
-    describe "when default currency is not present" do
-        before { @user.default_currency = '' }
-        it { should_not be_valid }
-    end
-
-    describe "when gender is not present" do
-        before { @user.gender = '' }
-        it { should_not be_valid }
-    end
-
     describe "when user access_token is not unique" do
         before {
             @user_with_same_token = @user.dup

@@ -225,6 +225,7 @@ DEPENDENCIES
   guard-spork (= 1.2.0)
   jquery-rails
   jquery_mobile_rails (= 1.2.0)
+  json
   meta_search (>= 1.1.0.pre)
   paperclip (~> 3.0)
   pg (= 0.12.2)
