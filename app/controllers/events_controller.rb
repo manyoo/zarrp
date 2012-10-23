@@ -21,13 +21,19 @@ class EventsController < ApplicationController
   def register
     @current_user = User.find_by_access_token(params[:user_access_token])
     if @current_user
+      @event = Event.find(params[:id])
       begin
-        @current_user.register(params[:id])
-        respond_to do |format|
-          format.js
+        @current_user.register(@event.id)
+        if !sendTicket(@current_user, @event)
+          @current_user.unregister(@event.id)
+          render :js => "alert('Failed to add ticket')"
+        else
+          respond_to do |format|
+            format.js
+          end
         end
       rescue
-        render :js => "alert('Already Registered')"
+        render :js => "alert('Already registered')"
       end
     else
       render :js => "alert('Invalid User')"

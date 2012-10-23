@@ -35,10 +35,16 @@ module EventsControllerHelper
         end
     end
 
-    def sendTicket(user, ticket)
-        json = CGI.escape(mkTicketJsonStr(user, ticket))
+    def sendTicket(user, event)
+        json = CGI.escape(mkTicketJsonStr(user, event))
         url = URI.parse("https://api.lemon.com/v2/setAddOn/?request=#{json}")
-        remoteCall(url)
+        js = remoteCall(url)
+        logger.info js.to_s
+        if js["response_code"] == "0"
+            true
+        else
+            false
+        end
     end
 
     def getUserProfile(access_token)
@@ -52,10 +58,16 @@ module EventsControllerHelper
                       "filters" => { "id_addOn_type" => $addOnId, "user_access_token" => access_token }
     end
 
-    def mkTicketJsonStr(user, ticket)
+    def mkTicketJsonStr(user, event)
         JSON.generate "credentials" => { "vendor_id" => $vendorId, "vendor_pwd" => $vendorPwd },
-                      "addOn_type" => { "id_addOn_type" => ticket.addOnId,
-                                        "fields" => [] }
+                      "addOn_type" => { "id_addOn_type" => "220",
+                                        "fields" => [{ "field_key" => "User Name", "field_value" => "#{user.firstname} #{user.lastname}"},
+                                                     { "field_key" => "Event Name", "field_value" => event.name },
+                                                     { "field_key" => "Event Date", "field_value" => event.time },
+                                                     { "field_key" => "Event Price", "field_value" => event.price }
+                                                    ]
+                                      },
+                      "user" => { "user_access_token" => user.access_token }
     end
 
     def remoteCall(url)

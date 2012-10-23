@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     registrations.create!(event_id: event_id)
   end
 
+  def unregister(event_id)
+    registrations.find_by_event_id(event_id).destroy
+  end
+  
   def registered?(event_id)
     !registrations.find_by_event_id(event_id).nil?
   end
