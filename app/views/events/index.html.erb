@@ -5,9 +5,9 @@
 <div data-role="content">
     <div data-role="fieldcontain">
         <select class="select-button" data-mini="true">
-            <option value="Rio de Janeiro">Rio de Janeiro</option>
-            <option value="New York">New York</option>
-            <option value="London">London</option>
+            <%= @cities.each do |city| %>
+                <option value="<%= city %>"><%= city %></option>
+            <% end %>
         </select>
     </div>
 

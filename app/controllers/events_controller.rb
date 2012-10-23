@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   def index
     if authenticated?
+      eventcities = Event.select(:city).uniq
+      @cities = eventcities.map { |event| event.city }
       @events_today = Event.all
       @events_tomorrow = []
     else
