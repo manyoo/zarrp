@@ -40,6 +40,7 @@ end
 gem 'jquery-rails'
 gem 'jquery_mobile_rails', '1.2.0'
 gem 'paperclip', '~> 3.0'
+gem 'will_paginate', '3.0.3'
 
 gem 'json'
 

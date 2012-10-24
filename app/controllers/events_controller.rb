@@ -5,8 +5,18 @@ class EventsController < ApplicationController
     if authenticated?
       eventcities = Event.select(:city).uniq
       @cities = eventcities.map { |event| event.city }
-      @events_today = Event.all
-      @events_tomorrow = []
+      @events = Event.where("time > date('now')").order(:time)
+      cur_city = params[:city]
+      if cur_city
+        @events = @events.where("city=?", cur_city)
+      end
+      @events = @events.paginate(page:params[:page], per_page:5)
+      @events_by_date = @events.group_by { |event| event.time.to_date }
+      @dates = @events_by_date.keys
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       render 'error'
     end

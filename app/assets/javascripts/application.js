@@ -13,3 +13,29 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
+
+var current_page = 1,
+    current_city = null;
+
+$(document).ready(function (){
+    $("#button_more").click(function() {
+        current_page ++;
+        if (current_city === null)
+            $.getScript('/events.js?user_access_token=' + access_token + '&addOn_access_token=' + addon_token + '&page=' + current_page);
+        else
+            $.getScript('/events.js?user_access_token=' +  access_token + '&addOn_access_token=' + addon_token + '&page=' + current_page + '&city=' + current_city);
+    });
+
+    $("select.select-button").change(function () {
+        current_page = 1;
+        $("#events_list li").remove();
+        var city_value = $("select.select-button option:selected").val();
+        if (city_value === "all") {
+            current_city = null;
+            $.getScript('/events.js?user_access_token=' +  access_token + '&addOn_access_token=' + addon_token);
+        } else {
+            current_city = city_value;
+            $.getScript('/events.js?user_access_token=' +  access_token + '&addOn_access_token=' + addon_token + '&page=1&city=' + current_city);
+        }
+    });
+});

@@ -1,0 +1,7 @@
+$("#events_list").append('<%= escape_javascript(render "events") %>');
+<% if @events.total_pages > @events.current_page %>
+    $(".more-button").show();
+<% else %>
+    $(".more-button").hide();
+<% end %>
+$("#events_list").listview('refresh');
