@@ -8,6 +8,9 @@ module EventsControllerHelper
     $addOnId = "221"
     $addOnAccessToken = "7610626|ro7gz824eei2lghed2xqhrja29vg"
 
+    $dateThemes = ["ui-bar-b", "ui-bar-e", "ui-bar-d"]
+    $dateThemesLen = $dateThemes.count
+
     def authenticate_user
         if @addon_token != $addOnAccessToken
             return false
@@ -83,5 +86,20 @@ module EventsControllerHelper
         http.use_ssl = true    # this is important to make it work with HTTPS correctly.
         res = http.start { |h| h.request(req) }
         JSON.parse res.body
+    end
+
+    def listFormatDate(date)
+      if date == Date.today
+        date.strftime("Today, %B %d")
+      elsif date == Date.tomorrow
+        date.strftime("Tomorrow, %B %d")
+      else
+        date.strftime("%A, %B %d")
+      end
+    end
+
+    def mkListDateTheme(dates, date)
+      idx = dates.index(date)
+      $dateThemes[idx % $dateThemesLen]
     end
 end

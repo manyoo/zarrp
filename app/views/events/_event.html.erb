@@ -2,7 +2,7 @@
 <%= image_tag event.avatar.url %>
 <h1><%= event.name %></h1>
 <h6><%= event.short_desc %></h6>
-<p><%= event.time %></p>
+<p><%= event.time.strftime("%B %d") %></p>
 <p class="list-address"><%= event.address %></p>
 <p class="ui-li-count"><%= event.registers.count %></p>
 </a>

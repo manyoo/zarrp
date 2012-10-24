@@ -1,8 +1,7 @@
 <div date-role="page" id="show-page">
     <div data-role="header">
-        <h1>ZARRP</h1>
-        <a data-role="button" href="<%= "#{root_path}?user_access_token=#{CGI.escape @access_token}&addOn_access_token=#{CGI.escape @addon_token}" %>" data-icon="arrow-l" data-iconpos="left" data-ajax="false"
-        class="ui-btn-left">
+        <h1>ShakeIt</h1>
+        <a data-role="button" href="<%= "#{root_path}?user_access_token=#{CGI.escape @access_token}&addOn_access_token=#{CGI.escape @addon_token}" %>" data-icon="arrow-l" data-iconpos="left" data-ajax="false" class="ui-btn-left">
             Back
         </a>
     </div><!-- /header -->
@@ -22,7 +21,7 @@
         </div>
         <h4><%= @event.short_desc %></h4>
         <div class="time-club">
-            <%= "#{@event.time} #{@event.club}" %>
+            <%= "#{@event.time.strftime("%m/%d/%Y")}  #{@event.club}" %>
         </div>
         <p><%= @event.desc %></p>
         <p>
