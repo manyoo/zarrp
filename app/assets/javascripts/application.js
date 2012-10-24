@@ -14,16 +14,19 @@
 //= require jquery_ujs
 //= require jquery.mobile
 
-var current_page = 1,
-    current_city = null;
+$(document).on("pageinit", "#index-page", function (){
+    var current_page = 1,
+        current_city = null,
+        access_token = escape($("#access_token").text());
+        addon_token = escape($("#addon_token").text());
 
-$(document).ready(function (){
     $("#button_more").click(function() {
         current_page ++;
-        if (current_city === null)
+        if (current_city === null) {
             $.getScript('/events.js?user_access_token=' + access_token + '&addOn_access_token=' + addon_token + '&page=' + current_page);
-        else
+        } else {
             $.getScript('/events.js?user_access_token=' +  access_token + '&addOn_access_token=' + addon_token + '&page=' + current_page + '&city=' + current_city);
+        }
     });
 
     $("select.select-button").change(function () {
