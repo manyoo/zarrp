@@ -16,7 +16,7 @@ end
 gem 'annotate', '2.5.0', :group => :development
 
 group :production do
-    gem 'pg', '0.12.2'
+    gem 'mysql2', '~> 0.3.11'
 end
 
 group :test do
