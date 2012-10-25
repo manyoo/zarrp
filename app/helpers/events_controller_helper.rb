@@ -3,10 +3,10 @@ module EventsControllerHelper
     require 'net/https'
     require 'cgi'
 
-    $vendorId = "manyoostudio"
-    $vendorPwd = "9c5d6uesb9eyvh5b1id44ijoouzx"
-    $addOnId = "221"
-    $addOnAccessToken = "7610626|ro7gz824eei2lghed2xqhrja29vg"
+    $vendorId = "shakeit"
+    $vendorPwd = "jtqigs335kult16w4jvwybk0r7xk"
+    $addOnId = "293"
+    $addOnAccessToken = "7653391|n2gjyx8fclilxf2s124sdroh6b5u"
 
     $dateThemes = ["ui-bar-b", "ui-bar-e", "ui-bar-d"]
     $dateThemesLen = $dateThemes.count
