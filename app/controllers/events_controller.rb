@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     if authenticated?
       eventcities = Event.select(:city).uniq
       @cities = eventcities.map { |event| event.city }
-      @events = Event.where("time > date('now')").order(:time)
+      @events = Event.where("time > :now", :now => Time.now).order(:time)
       cur_city = params[:city]
       if cur_city
         @events = @events.where("city=?", cur_city)
