@@ -11,6 +11,9 @@ module EventsControllerHelper
     $dateThemesLen = $dateThemes.count
 
     def authenticate_user
+        if @access_token.nil?
+            return false
+        end
         @current_user = User.find_by_access_token @access_token
         if @current_user
             true
