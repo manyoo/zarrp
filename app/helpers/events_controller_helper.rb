@@ -6,7 +6,7 @@ module EventsControllerHelper
     $vendorId = "shakeit"
     $vendorPwd = "jtqigs335kult16w4jvwybk0r7xk"
     $addOnId = "293"
-    $addOnAccessToken = "7653391|n2gjyx8fclilxf2s124sdroh6b5u"
+    $addOnAccessToken = "7653348|z2gxp172yxonrqv3qnd6ucanh8g9"
 
     $dateThemes = ["ui-bar-b", "ui-bar-e", "ui-bar-d"]
     $dateThemesLen = $dateThemes.count
@@ -20,7 +20,8 @@ module EventsControllerHelper
             true
         else
             js = getUserProfile @access_token
-            if js["response_code"] == "0"
+            logger.info(js.to_s)
+            if js["response_code"] == "0" || js["response_code"] == "200"
                 users = js["users"]
                 if users.nil? || users.empty?
                     return false
@@ -42,10 +43,10 @@ module EventsControllerHelper
         json = CGI.escape(mkTicketJsonStr(user, event))
         url = URI.parse("https://api.lemon.com/v2/setAddOn/?request=#{json}")
         js = remoteCall(url)
-        if js["response_code"] == "0"
+        if js["response_code"] == "0" || js["response_code"] == "200"
             true
         else
-            false
+            false 
         end
     end
 

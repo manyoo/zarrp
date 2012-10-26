@@ -1,0 +1,49 @@
+1, Install  Ruby Version Manager (RVM)
+RVM is a command line tool which allows you to run multiple versions of ruby – such as 1.8.7 as well as 1.9.2. Gem will be installed along with this, if not, then install rubygems before proceeding to next step.
+
+user$ \curl -L https://get.rvm.io | bash -s stable
+
+Then type the command given below, to check whether it has been correctly installed, the output after executing the command will be – ‘rvm is a function’
+
+type rvm | head -1
+
+2, Install Ruby and RubyGems. (This process may take a long time based on the OS version.)
+user$ rvm install 1.9.3
+user$ rvm use 1.9.3
+
+3, Install Phusion Passenger (mod_ruby for apache)
+user$ gem install passenger
+
+4, Install passenger's apache module.
+user$ passenger-install-apache2-module
+This command will tell you what other softwares you need to install based on your environment.
+After it finished, it will tell you how to configure apache.
+
+
+5, Upload our source code. In the zarrp directory, run 'bundle install --without development test' to install all the gems needed. As we are using Mysql database, you may need to install mysql server, client as well as the development package.
+You also need to change the database settings in config/database.yml file, such as database name, username, password, etc.
+
+6, Based on your database configuration, create a new database in mysql. such as the default used is getwolla_db.
+
+7, Run the database migration.
+user$ RAILS_ENV=production rake db:migrate
+Then the database is ready.
+
+8, Configure a apache virtual host based on the example and restart apache. It's Running then!
+
+Deploying a Ruby on Rails application: an example
+
+Suppose you have a Rails application in /somewhere. Add a virtual host to your
+Apache configuration file and set its DocumentRoot to /somewhere/public:
+
+   <VirtualHost *:80>
+      ServerName www.yourhost.com
+      # !!! Be sure to point DocumentRoot to 'public'!
+      DocumentRoot /somewhere/public    
+      <Directory /somewhere/public>
+         # This relaxes Apache security settings.
+         AllowOverride all
+         # MultiViews must be turned off.
+         Options -MultiViews
+      </Directory>
+   </VirtualHost>

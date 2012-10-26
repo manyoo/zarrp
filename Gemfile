@@ -17,6 +17,8 @@ gem 'annotate', '2.5.0', :group => :development
 
 group :production do
     gem 'mysql2', '~> 0.3.11'
+    gem 'execjs'
+    gem 'therubyracer'
 end
 
 group :test do
