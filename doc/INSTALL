@@ -29,7 +29,10 @@ You also need to change the database settings in config/database.yml file, such 
 user$ RAILS_ENV=production rake db:migrate
 Then the database is ready.
 
-8, Configure a apache virtual host based on the example and restart apache. It's Running then!
+8, Precompile all the assets.
+user$ RAILS_ENV=production rake assets:precompile
+
+9, Configure a apache virtual host based on the example and restart apache. It's Running then!
 
 Deploying a Ruby on Rails application: an example
 
