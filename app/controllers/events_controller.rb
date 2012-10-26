@@ -55,7 +55,6 @@ class EventsController < ApplicationController
   private
   def authenticated?
     @access_token = params[:user_access_token]
-    @addon_token = params[:addOn_access_token]
     authenticate_user
   end
 end

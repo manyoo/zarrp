@@ -6,21 +6,16 @@ module EventsControllerHelper
     $vendorId = "shakeit"
     $vendorPwd = "jtqigs335kult16w4jvwybk0r7xk"
     $addOnId = "293"
-    $addOnAccessToken = "7653348|z2gxp172yxonrqv3qnd6ucanh8g9"
 
     $dateThemes = ["ui-bar-b", "ui-bar-e", "ui-bar-d"]
     $dateThemesLen = $dateThemes.count
 
     def authenticate_user
-        if @addon_token != $addOnAccessToken
-            return false
-        end
         @current_user = User.find_by_access_token @access_token
         if @current_user
             true
         else
             js = getUserProfile @access_token
-            logger.info(js.to_s)
             if js["response_code"] == "0" || js["response_code"] == "200"
                 users = js["users"]
                 if users.nil? || users.empty?
