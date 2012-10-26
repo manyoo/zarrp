@@ -61,7 +61,7 @@ module EventsControllerHelper
                       "addOn_type" => { "id_addOn_type" => event.addon_code,
                                         "fields" => [{ "field_key" => "username", "field_value" => "#{user.firstname} #{user.lastname}"},
                                                      { "field_key" => "eventname", "field_value" => event.name },
-                                                     { "field_key" => "eventdate", "field_value" => event.time },
+                                                     { "field_key" => "eventdate", "field_value" => event.time.strftime("%A, %B %d") },
                                                      { "field_key" => "eventprice", "field_value" => event.price },
                                                      { "field_key" => "eventcity", "field_value" => event.city },
                                                      { "field_key" => "eventaddress", "field_value" => event.address },
