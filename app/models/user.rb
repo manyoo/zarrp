@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :access_token, :presence => true, :uniqueness => true
 
   def register(event_id)
-    registrations.create!(event_id: event_id)
+    registrations.create!(:event_id => event_id)
   end
 
   def unregister(event_id)
