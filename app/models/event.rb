@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }
 
-  validates :avatar, :attachment_presence => true
-  validates :image, :attachment_presence => true
+  validates_attachment_presence :avatar
+  validates_attachment_presence :image
   validates :addon_code, :presence => true
 end

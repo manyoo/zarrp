@@ -10,7 +10,7 @@ class EventsController < ApplicationController
       if cur_city
         @events = @events.where("city=?", cur_city)
       end
-      @events = @events.paginate(page:params[:page], per_page:5)
+      @events = @events.paginate(:page => params[:page], :per_page => 5)
       @events_by_date = @events.group_by { |event| event.time.to_date }
       @dates = @events_by_date.keys
       respond_to do |format|
