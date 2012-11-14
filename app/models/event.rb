@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
   validates :club, :presence => true
   validates :phone, :presence => true
   validates :short_desc, :presence => true, :length => { :maximum => 50 }
-  validates :desc, :presence => true
+  validates :desc, :presence => true, :length => { :maximum => 2000 }
   validates :time, :presence => true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true, :format => { :with => VALID_EMAIL_REGEX }

@@ -11,19 +11,13 @@
     <div data-role="content">
         <div class="name-row">
             <h2 class="event-name"><%= @event.name %></h2>
-            <div class="share-button-list">
-                <% if !@current_user.registered?(@event.id) %>
-                    <%= link_to "I'M IN", {:action => "register", :user_access_token => @access_token}, :remote => true, :method => :post, :format => "js", :class => "share-buttons check-button" %>
-                <% end %>
-                <a href="http://www.facebook.com/share.php?u=<%= event_url(@event) %>" class="share-buttons"><%= image_tag 'FacebookButton.png' %></a>
-                <a href="https://twitter.com/share?url=<%= event_url(@event) %>" class="share-buttons"><%= image_tag "TwitterButton.png" %></a>
-            </div>
         </div>
         <h4><%= @event.short_desc %></h4>
         <div class="time-club">
             <%= "#{@event.time.strftime("%m/%d/%Y")}  #{@event.club}" %>
         </div>
         <p><%= @event.desc %></p>
+        <p><%= "$#{@event.price}" %></p>
         <p>
             <div class="club"><%= @event.club %></div>
             <div class="Address"><%= @event.address %></div>
@@ -32,5 +26,12 @@
             <a href="tel:<%= @event.phone %>" class="phone"><%= @event.phone %></a><br />
             <a href="mailto:<%= @event.email %>" class="email"><%= @event.email %></a>
         </p>
+        <div class="share-button-list">
+            <% if !@current_user.registered?(@event.id) %>
+                <%= link_to "I will go", {:action => "register", :user_access_token => @access_token}, :remote => true, :method => :post, :format => "js", :class => "share-buttons check-button" %>
+            <% end %>
+            <a href="http://www.facebook.com/share.php?u=<%= event_url(@event) %>" class="share-buttons"><%= image_tag 'FacebookButton.png' %></a>
+            <a href="https://twitter.com/share?url=<%= event_url(@event) %>" class="share-buttons"><%= image_tag "TwitterButton.png" %></a>
+        </div>
     </div>
 </div>

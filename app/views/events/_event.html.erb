@@ -4,5 +4,5 @@
 <h6><%= event.short_desc %></h6>
 <p><%= event.time.strftime("%B %d") %></p>
 <p class="list-address"><%= event.address %></p>
-<p class="ui-li-count"><%= event.registers.count %></p>
+<p class="ui-li-count"><%= "#{event.registers.count} will go" %></p>
 </a>

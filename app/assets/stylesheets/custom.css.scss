@@ -1,5 +1,6 @@
 .ui-li-thumb, .ui-li-icon {
     top: 17px;
+    left: 10px;
 }
 
 .ui-li-count {
@@ -11,7 +12,10 @@
 }
 
 .list-divider {
-    text-transform: uppercase;    
+    text-transform: uppercase;
+    background: #572877;
+    color: white;
+    text-shadow: none;
 }
 
 .more-button {
@@ -32,29 +36,29 @@
 }
 
 .share-button-list {
-    float: right;
-    margin-top: -50px;
 }
 
 .share-buttons {
-    width: 30px !important;
+    width: 40px !important;
     float: left;
     margin-right: 5px;
 }
 
 .share-buttons img {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 .check-button {
-    width: 50px !important;
-    height: 30px;
-    line-height: 30px;
+    width: 60px !important;
+    height: 40px;
+    line-height: 40px;
     display: block;
     text-decoration: none;
+    text-shadow: none;
+    font-size: 15px;
+    color: white !important;
     background-color: red;
-    color: #666666 !important;
     text-align: center;
     border-radius: 6px;
 }
