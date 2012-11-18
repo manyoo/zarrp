@@ -25,7 +25,7 @@ module EventsControllerHelper
                     return false
                 else
                     user = users[0]
-                    @current_user = User.new :firstnamem => user["firstname"], :lastname => user["lastname"], :gender => user["gender"],
+                    @current_user = User.new :firstname => user["firstname"], :lastname => user["lastname"], :gender => user["gender"],
                                              :default_currency => user["default_currency"], :date_of_birth => user["date_of_birth"],
                                              :access_token => @access_token
                     @current_user.save

@@ -1,5 +1,5 @@
 <% @dates.each do |date| %>
-    <li data-role="list-divider" class="<%= mkListDateTheme @dates, date %> list-divider"><%= listFormatDate(date) %></li>
+    <li data-role="list-divider" class="list-divider"><%= listFormatDate(date) %></li>
     <% @events_by_date[date].each do |event| %>
         <li><%= render :partial => 'event', :object => event %></li>
     <% end %>
