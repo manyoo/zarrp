@@ -3,9 +3,10 @@ module EventsControllerHelper
     require 'net/https'
     require 'cgi'
 
-    $vendorId = "wolla"
-    $vendorPwd = "b14ywqsprn69p1pltdu0fkkc0o1l"
-    $addOnId = "302"
+    # set your own corresponding data here.
+    $vendorId = ""
+    $vendorPwd = ""
+    $addOnId = ""
 
     $dateThemes = ["ui-bar-b", "ui-bar-e", "ui-bar-d"]
     $dateThemesLen = $dateThemes.count
